@@ -12,3 +12,6 @@
 --data-raw '{
     "sentence": "sentence sentence sentence sentence"
 }'```
+
+## How to run test
+1. Run `mvn clean test`
