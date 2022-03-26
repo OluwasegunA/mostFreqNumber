@@ -5,8 +5,8 @@ import io.vertx.core.json.JsonObject;
 import java.util.HashMap;
 
 public class MostOccurringWords {
-    public static JsonObject mostOccurringWords(String sentence) throws Exception{
-        if(sentence == null || sentence.isEmpty() || sentence.trim().isEmpty()) {
+    public static JsonObject mostOccurringWords(String sentence) throws Exception {
+        if (sentence == null || sentence.isEmpty() || sentence.trim().isEmpty()) {
             throw new Exception("sentence cannot be empty");
         }
         HashMap<String, Integer> map = new HashMap<>();
@@ -14,13 +14,10 @@ public class MostOccurringWords {
         Integer mostOccurringNumber = 0;
         String[] strings = sentence.split(" ");
         for (String s : strings) {
-            if (map.containsKey(s)) {
-                map.put(s, map.get(s) + 1);
-            } else {
-                map.put(s, 1);
-            }
-            if (map.get(s) > mostOccurringNumber) {
-                mostOccurringNumber = map.get(s);
+            Integer occurrence = map.getOrDefault(s, 0) + 1;
+            map.put(s, occurrence);
+            if (occurrence > mostOccurringNumber) {
+                mostOccurringNumber = occurrence;
                 mostOccurringString = s;
             }
         }
